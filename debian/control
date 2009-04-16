@@ -1,7 +1,7 @@
 Source: dsp-tools
 Priority: optional
 Maintainer: Maemo Multimedia <multimedia@maemo.org>
-Build-Depends: debhelper (>= 4)
+Build-Depends: debhelper (>= 4), upstart-dev
 Standards-Version: 3.7.3
 
 Package: dsp-manager

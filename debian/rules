@@ -23,6 +23,7 @@ binary-arch: build install
 	dh_installchangelogs
 	dh_install --sourcedir=debian/tmp
 	dh_installdocs
+	dh_installupstart --init-script=dsp-manager
 	dh_installman
 	dh_link
 	dh_strip --dbg-package=dsp-manager
