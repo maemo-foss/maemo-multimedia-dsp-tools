@@ -1,0 +1,10 @@
+Source: dsp-tools
+Priority: optional
+Maintainer: Maemo Multimedia <multimedia@maemo.org>
+Build-Depends: debhelper (>= 4)
+Standards-Version: 3.7.3
+
+Package: dsp-manager
+Architecture: armel
+Depends: ${shlibs:Depends}
+Description: DSP handler and watchdog.
