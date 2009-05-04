@@ -1,4 +1,5 @@
 Source: dsp-tools
+Section: non-free
 Priority: optional
 Maintainer: Maemo Multimedia <multimedia@maemo.org>
 Build-Depends: debhelper (>= 4), upstart-dev
