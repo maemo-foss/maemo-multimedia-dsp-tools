@@ -1,10 +1,17 @@
-dsp-tools (0.2) unstable; urgency=low
+dsp-tools (1.0.1-2) unstable; urgency=low
+
+  * Minor improvements in recover script.
+  * Fixes NB#110330 - don't spam the console, use syslog.
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Mon, 04 May 2009 16:10:23 +0300
+
+dsp-tools (1.0.1-1) unstable; urgency=low
 
   * Add missing section to control file.
 
- -- Maemo Multimedia <multimedia@maemo.org>  Mon, 04 May 2009 11:54:28 +0300
+ -- Maemo Multimedia <multimedia@maemo.org>  Mon, 22 Apr 2009 16:15:38 +0300
 
-dsp-tools (0.1) unstable; urgency=low
+dsp-tools (1.0-1) unstable; urgency=low
 
   * Initial release.
 
