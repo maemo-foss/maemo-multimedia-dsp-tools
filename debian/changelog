@@ -1,3 +1,9 @@
+dsp-tools (0.2) unstable; urgency=low
+
+  * Add missing section to control file.
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Mon, 04 May 2009 11:54:28 +0300
+
 dsp-tools (0.1) unstable; urgency=low
 
   * Initial release.
