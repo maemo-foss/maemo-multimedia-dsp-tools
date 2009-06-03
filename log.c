@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2009 Nokia Corporation.
+ * Copyright (C) 2009 Felipe Contreras
  *
- * Author: Felipe Contreras <felipe.contreras@nokia.com>
+ * Author: Felipe Contreras <felipe.contreras@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,31 +19,28 @@
  *
  */
 
-#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
+
+#define SYSLOG
 
 #ifdef SYSLOG
 #include <syslog.h>
 #endif
 
-unsigned int debug_level = 1;
-const char *debug_id = "log";
-
-#define EXTRA_DEBUG
-
-static inline const char *
-log_level_to_string(unsigned int level)
+#ifdef SYSLOG
+static inline int
+log_level_to_syslog(unsigned int level)
 {
-    switch (level)
-    {
-        case 0: return "error"; break;
-        case 1: return "warning"; break;
-        case 2: return "info"; break;
-        default: return NULL; break;
-    }
+	switch (level) {
+		case 0: return LOG_ERR;
+		case 1: return LOG_WARNING;
+		case 2: return LOG_INFO;
+		default: return LOG_DEBUG;
+	}
 }
+#endif
 
 void pr_helper(unsigned int level,
 	       const char *file,
@@ -52,45 +49,22 @@ void pr_helper(unsigned int level,
 	       const char *fmt,
 	       ...)
 {
-    char *tmp;
-    va_list args;
+	char *tmp;
+	va_list args;
 
-    if (level < debug_level)
-	    return;
+	va_start(args, fmt);
 
-    va_start (args, fmt);
+	vasprintf(&tmp, fmt, args);
 
-    vasprintf (&tmp, fmt, args);
-
-#ifdef EXTRA_DEBUG
-    fprintf(stderr, "%s %s:%d:%s() %s\n",
-	    log_level_to_string (level),
-	    file, line, function,
-	    tmp);
-#else
-    fprintf(stderr, "%s: %s\n",
-	    log_level_to_string (level),
-	    tmp);
-#endif
-
+	if (level <= 2) {
 #ifdef SYSLOG
-    {
-	    int syslog_level;
-	    switch(level) {
-		    case 0:
-		    syslog_level = LOG_ERR;
-		    case 1:
-		    syslog_level = LOG_WARNING;
-		    case 2:
-		    syslog_level = LOG_INFO;
-		    default:
-		    syslog_level = LOG_DEBUG;
-	    }
-	    syslog(syslog_level, "%s", tmp);
-    }
+		syslog(log_level_to_syslog(level), "%s", tmp);
+#else
+		printf("%s: %s\n", function, tmp);
 #endif
+	}
 
-    free (tmp);
+	free(tmp);
 
-    va_end (args);
+	va_end(args);
 }
