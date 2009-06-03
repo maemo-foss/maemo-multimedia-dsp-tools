@@ -1,3 +1,9 @@
+dsp-tools (1.0.2-1) unstable; urgency=low
+
+  * Improvements in logging.
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Wed, 03 Jun 2009 19:02:48 +0300
+
 dsp-tools (1.0.1-2) unstable; urgency=low
 
   * Minor improvements in recover script.
