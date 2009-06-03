@@ -4,8 +4,6 @@ author "Felipe Contreas"
 start on started dsp
 stop on stopping dsp
 
-console output
-
 script
         echo "Starting dsp-manager"
         exec /usr/sbin/dsp-manager
