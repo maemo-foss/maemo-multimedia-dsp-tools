@@ -9,3 +9,8 @@ Package: dsp-manager
 Architecture: armel
 Depends: ${shlibs:Depends}
 Description: DSP handler and watchdog.
+
+Package: dsp-tools
+Architecture: armel
+Depends: ${shlibs:Depends}
+Description: Various DSP tools.
