@@ -1,3 +1,9 @@
+dsp-tools (1.1.0-1) unstable; urgency=low
+
+  * New dsp-tools package.
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Mon, 05 Oct 2009 17:29:06 +0300
+
 dsp-tools (1.0.2-1) unstable; urgency=low
 
   * Improvements in logging.
