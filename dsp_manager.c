@@ -80,8 +80,8 @@ bool attach(void)
 
 int main(void)
 {
-	struct dsp_notification *n_mmufault;
-	struct dsp_notification *n_syserror;
+	struct dsp_notification *n_mmufault = NULL;
+	struct dsp_notification *n_syserror = NULL;
 	struct dsp_notification *n_objects[2];
 	int ret = -1;
 
@@ -154,13 +154,15 @@ int main(void)
 			pr_err("what?");
 	}
 
-	dsp_close(dsp_handle);
-
 	ret = 0;
 
 leave:
 	free(n_mmufault);
 	free(n_syserror);
+	if (proc)
+		dsp_detach(dsp_handle, proc);
+	if (dsp_handle > 0)
+		dsp_close(dsp_handle);
 
 	pr_info("end");
 
