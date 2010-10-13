@@ -1,4 +1,4 @@
-*.o
-dsp-manager
+*.[od]
 dsp-load
 dsp-probe
+dsp-test

@@ -1,24 +1,13 @@
 /*
- * Copyright (C) 2009 Nokia Corporation.
+ * Copyright (C) 2009-2010 Nokia Corporation
  *
  * Authors:
  * Felipe Contreras <felipe.contreras@nokia.com>
  * Johann Prieur <johann.prieur@nokia.com>
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation
- * version 2.1 of the License.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
+ * This file may be used under the terms of the GNU Lesser General Public
+ * License version 2.1, a copy of which is found in LICENSE included in the
+ * packaging of this file.
  */
 
 #include <stdio.h>
@@ -27,10 +16,9 @@
 
 #include "dsp_bridge.h"
 
-unsigned delay = 500; /* in ms */
+static unsigned delay = 500; /* in ms */
 
-static void
-display(void)
+static void display(void)
 {
 	int dsp_handle;
 	void *proc_handle;
@@ -45,8 +33,8 @@ display(void)
 		dsp_proc_get_info(dsp_handle, proc_handle, DSP_RESOURCE_PROCLOAD, &info, sizeof(info));
 
 		printf("load: %lu, freq: %lu\n",
-		       info.result.proc.pred_load,
-		       info.result.proc.pred_freq);
+				info.result.proc.pred_load,
+				info.result.proc.pred_freq);
 
 		usleep(delay * 1000);
 	} while (true);
@@ -56,9 +44,7 @@ leave:
 	dsp_close(dsp_handle);
 }
 
-int
-main(int argc,
-     char *argv[])
+int main(int argc, char *argv[])
 {
 	display();
 	return 0;
