@@ -1,2 +1,4 @@
+usr/bin/dsp-test
 usr/bin/dsp-load
 usr/bin/dsp-probe
+lib/dsp/test.dll64P

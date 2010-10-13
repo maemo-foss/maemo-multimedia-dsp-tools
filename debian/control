@@ -1,16 +1,18 @@
 Source: dsp-tools
-Section: non-free
+Section: misc
 Priority: optional
 Maintainer: Maemo Multimedia <multimedia@maemo.org>
-Build-Depends: debhelper (>= 4), upstart-dev
-Standards-Version: 3.7.3
-
-Package: dsp-manager
-Architecture: armel
-Depends: ${shlibs:Depends}
-Description: DSP handler and watchdog.
+Build-Depends: debhelper (>= 5)
+Standards-Version: 3.9.1
 
 Package: dsp-tools
 Architecture: armel
-Depends: ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Various DSP tools.
+
+Package: dsp-tools-dbg
+Section: debug
+Priority: extra
+Architecture: armel
+Depends: ${misc:Depends}, dsp-tools (= ${binary:Version})
+Description: Debug symbols for dsp-tools.

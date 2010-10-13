@@ -2,38 +2,36 @@
 
 build:
 	dh_testdir
-	$(MAKE)
+	$(MAKE) DSP_API=1
 
-clean:
+install: build
 	dh_testdir
 	dh_testroot
-	dh_clean
-	$(MAKE) clean
-
-install:
-	dh_testdir
-	dh_testroot
-	dh_clean -k 
+	dh_clean -k
 	dh_installdirs
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/tmp
 
-binary-arch: build install
-	dh_testdir
-	dh_testroot
+binary-arch: install
+	dh_testdir -a
+	dh_testroot -a
 	dh_installchangelogs
-	dh_install --sourcedir=debian/tmp
-	dh_installdocs
-	dh_installupstart --init-script=dsp-manager
-	dh_installman
-	dh_link
-	dh_strip --dbg-package=dsp-manager --dbg-package=dsp-tools
-	dh_compress
-	dh_fixperms
-	dh_installdeb
-	dh_shlibdeps
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
+	dh_install --sourcedir=debian/tmp -a
+	dh_link -a
+	dh_strip --dbg-package=dsp-tools-dbg -a
+	dh_fixperms -a
+	dh_installdeb -a
+	dh_shlibdeps -a
+	dh_gencontrol -a
+	dh_md5sums -a
+	dh_builddeb -a
 
-binary: binary-arch
-.PHONY: build clean binary-arch binary install
+binary-indep:
+
+binary: binary-arch binary-indep
+
+clean:
+	dh_testdir
+	$(MAKE) clean
+	dh_clean
+
+.PHONY: build install binary-arch binary-indep binary clean
